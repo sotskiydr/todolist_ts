@@ -1,13 +1,18 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import todoReducer from './reducers/TodoSlice'
+import {TodosService} from '../services/TodosService'
 
 const rootReducer = combineReducers({
-    todoReducer
+    todoReducer,
+    [TodosService.reducerPath]: TodosService.reducer,
 })
 
 export const setupStore = () => {
     return configureStore({
-        reducer: rootReducer
+        reducer: rootReducer,
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware().concat(TodosService.middleware)
+
     })
 }
 
