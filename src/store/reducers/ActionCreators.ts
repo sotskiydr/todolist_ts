@@ -18,13 +18,20 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 
 
 // 2
-export const fetchTodos = createAsyncThunk(
-  'todos/fetchAll', async (_, thunkApi) => {
-      try {
-          const response = await axios.get<ITodo[]>('https://jsonplaceholder.typicode.com/todos')
-          return response.data
-      }catch (e) {
-          return thunkApi.rejectWithValue('Не удалось')
-      }
-  }
-)
+// export const fetchTodos = createAsyncThunk(
+//   'todos/fetchAll', async (_, thunkApi) => {
+//       try {
+//           const response = await axios.get<ITodo[]>('https://jsonplaceholder.typicode.com/todos')
+//           return response.data
+//       }catch (e) {
+//           return thunkApi.rejectWithValue('Не удалось')
+//       }
+//   }
+// )
+export const fitlerTodos = (filter:string) => (dispatch: AppDispatch) => {
+    try {
+        dispatch(todoSlice.actions.changeFilter(filter))
+    }catch (e) {
+        dispatch(todoSlice.actions.changeError('ошибка'))
+    }
+}
