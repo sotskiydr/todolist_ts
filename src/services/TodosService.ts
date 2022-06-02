@@ -30,7 +30,7 @@ export const TodosService = createApi({
             }),
             invalidatesTags: ['PostTodo']
         }),
-        deleteTodo: builder.mutation<ITodo, number>({
+        deleteTodo: builder.mutation<ITodo, string>({
             query: (id) => ({
                 url: `/todos/todoslist/${id}`,
                 method: 'DELETE',

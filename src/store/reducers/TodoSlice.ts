@@ -6,13 +6,17 @@ interface TodoSlice {
     isLoading: boolean;
     error: string;
     filter: string;
+    isOpenModalChangeTodo: boolean;
+    isOpenModalCreateTodo: boolean;
 }
 
 const initialState:TodoSlice = {
     todos: [],
     isLoading: false,
     error: '',
-    filter: ''
+    filter: '',
+    isOpenModalChangeTodo: false,
+    isOpenModalCreateTodo: false,
 }
 
 export const todoSlice = createSlice({
@@ -24,6 +28,12 @@ export const todoSlice = createSlice({
         },
         changeError(state, action: PayloadAction<string>){
             state.error = action.payload
+        },
+        isOpenModalChangeTodo(state, action: PayloadAction<boolean>){
+            state.isOpenModalChangeTodo = action.payload
+        },
+        isOpenModalCreateTodo(state, action: PayloadAction<boolean>){
+            state.isOpenModalCreateTodo = action.payload
         }
     }
 })

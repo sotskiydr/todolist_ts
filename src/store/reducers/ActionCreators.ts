@@ -35,3 +35,20 @@ export const fitlerTodos = (filter:string) => (dispatch: AppDispatch) => {
         dispatch(todoSlice.actions.changeError('ошибка'))
     }
 }
+
+export const changeModalWindowState = (modalState:boolean, modal:string) => (dispatch: AppDispatch) => {
+    try {
+        switch (modal) {
+            case 'change' :
+                dispatch(todoSlice.actions.isOpenModalChangeTodo(modalState))
+                break;
+            case 'create' :
+                dispatch(todoSlice.actions.isOpenModalCreateTodo(modalState))
+                break;
+            default:
+                dispatch(todoSlice.actions.changeError('switch error'))
+        }
+    }catch (e) {
+        dispatch(todoSlice.actions.changeError('ошибка'))
+    }
+}

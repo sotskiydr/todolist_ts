@@ -1,13 +1,14 @@
 import React from 'react';
-import './App.css';
 import TodosList from "./components/TodosView/TodosList/TodosList";
+import Container from './components/Container/Container'
+import './App.css';
 
 function App() {
 
   return (
-    <div className="App">
-      <TodosList />
-    </div>
+    <Container>
+        <TodosList />
+    </Container>
   );
 }
 
